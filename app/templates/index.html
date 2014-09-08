@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+<style>
+.issue { background-color:LightGreen ; }
+
+</style>
+</head>
+<body>
+<!-- <h4>New issues on <username></h4> -->
+<div class="issue">
+{% for issue in issues %}
+| <a href="{{server}}/browse/{{issue}}">{{issue}}</a>
+{% endfor %}
+
+</div>
+</body>
+</html>

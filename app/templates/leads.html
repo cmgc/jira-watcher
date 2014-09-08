@@ -1,0 +1,22 @@
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#999;margin:0px auto;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;}
+.tg .tg-69vs{font-size:100%;font-family:serif !important;}
+.tg .tg-s6z2{text-align:center}
+.tg .tg-vn4c{background-color:#D2E4FC}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-69vs">Project name</th>
+    <th class="tg-s6z2">Project key</th>
+    <th class="tg-031e">Project lead</th>
+  </tr>
+  {% for lead in leads %}
+  <tr>
+    <td class="tg-vn4c">{{lead[0]}}</td>
+    <td class="tg-vn4c">{{lead[1]}}</td>
+    <td class="tg-vn4c">{{lead[2]}}</td>
+  </tr>
+  {% endfor %}
+</table>

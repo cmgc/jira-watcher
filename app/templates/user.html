@@ -1,0 +1,6 @@
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<p>Hey {{name}}, it's yours: </p>
+
+{% for i in issues %}
+<b><a href="{{server}}/browse/{{i}}" target="_blank">{{i}}</a></b>: {{issues[i]}} <br>
+{% endfor %}

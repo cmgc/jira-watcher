@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="refresh" content="60">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+</head>
+
+<p>tickets</p>
+
+{% for ticket in tickets %}
+<hr>
+<p><a href="{{server}}/browse/{{ticket}}" target="_blank">{{ticket}}</a>: {{tickets[ticket]}}</p>
+
+{% endfor %}
+
+<hr>
