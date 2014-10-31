@@ -9,34 +9,35 @@ jira = JIRA(options, basic_auth=(USERNAME, PASSWORD))
 
 # get dict with issue.key:summary by provided JQL
 def getIsuesS():
-  issuesOnSupport = jira.search_issues(S_JQL)
-  return dict(zip([issue.key for issue in issuesOnSupport],\
-      [issue.fields.summary for issue in issuesOnSupport]))
+    issuesOnSupport = jira.search_issues(S_JQL)
+    return dict(zip([issue.key for issue in issuesOnSupport],\
+        [issue.fields.summary for issue in issuesOnSupport]))
 
 # get list of all projects ( [[names, keys, leads], ...] )
 def getAllLeads():
-  projects = jira.projects()
-  keys = [project.key for project in projects]
-  names = [project.name for project in projects]
-  leads = [jira.project(project.key).lead.displayName for project in projects]
-  result = [], i = 0
-  mx = len(keys)
-  while i < mx:
-    result.append([names[i], keys[i], leads[i]])
-    i += 1
-  return result
+    projects = jira.projects()
+    keys = [project.key for project in projects]
+    names = [project.name for project in projects]
+    leads = [jira.project(project.key).lead.displayName \
+            for project in projects]
+    result, i = [], 0
+    mx = len(keys)
+    while i < mx:
+        result.append([names[i], keys[i], leads[i]])
+        i += 1
+    return result
 
 # get issues by user where status in ( Open, "In Progress")
 def getIssueByUser(username):
-  issues = jira.search_issues('status in (Open, "In Progress") AND assignee in ('\
-      + str(username)+ ')')
-  return dict(zip([issue.key for issue in issues],\
-      [issue.fields.summary for issue in issues]))
+    issues = jira.search_issues('status in (Open, "In Progress") AND assignee in ('\
+        + str(username)+ ')')
+    return dict(zip([issue.key for issue in issues],\
+        [issue.fields.summary for issue in issues]))
 
 # get all keys of issues provided by JQL
 def getIssues():
-  issuesOnSupport = jira.search_issues(S_JQL)
-  return [issue.key for issue in issuesOnSupport]
+    issuesOnSupport = jira.search_issues(S_JQL)
+    return [issue.key for issue in issuesOnSupport]
 
 # function may be used throw jinja
 #app.jinja_env.globals.update(getIssueByUser=getIssueByUser)
