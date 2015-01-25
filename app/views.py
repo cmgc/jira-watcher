@@ -41,6 +41,10 @@ def test():
     tickets = getIsuesS()
     return render_template("test.html", server=SERVER, tickets=tickets)
 
+@app.route('/a/<user>')
+def assign_to_user(user):
+    assignToUser(S_JQL, user)
+    return redirect(url_for('index'))
 @app.route('/is')
 def test2():
     issues = getIssues()
