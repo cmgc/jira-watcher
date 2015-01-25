@@ -39,6 +39,10 @@ def getIssues():
     issuesOnSupport = jira.search_issues(S_JQL)
     return [issue.key for issue in issuesOnSupport]
 
+def assignToUser(S_JQL, user):
+    issues = jira.search_issues(S_JQL)
+    for issue in issues:
+        jira.assign_issue(issue, user)
 # function may be used throw jinja
 #app.jinja_env.globals.update(getIssueByUser=getIssueByUser)
 
